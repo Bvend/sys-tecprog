@@ -5,7 +5,7 @@ Pessoa::Pessoa()
 	inicializa(0, 0, 0);
 }
 
-Pessoa::Pessoa(int diaNasc, int mesNasc, int anoNasc, const char *nome)
+Pessoa::Pessoa(int diaNasc, int mesNasc, int anoNasc, const char *n)
 {
 	inicializa(diaNasc, mesNasc, anoNasc, nome);
 }
@@ -14,13 +14,23 @@ Pessoa::~Pessoa()
 {
 }
 
-void Pessoa::inicializa(int diaNasc, int mesNasc, int anoNasc, const char* nome)
+void Pessoa::inicializa(int diaNasc, int mesNasc, int anoNasc, const char* n)
 {
 	diaP = diaNasc;
 	mesP = mesNasc;
 	anoP = anoNasc;
-	strcpy_s(nomeP, nome);
+	strcpy_s(nome, n);
 	idadeP = -1;
+}
+
+void Pessoa::setNome(const char* n)
+{
+	strcpy_s(nome, n);
+}
+
+char* Pessoa::getNome()
+{
+	return nome;
 }
 
 void Pessoa::calc_idade(int diaAtual, int mesAtual, int anoAtual)
@@ -43,21 +53,11 @@ void Pessoa::calc_idade(int diaAtual, int mesAtual, int anoAtual)
 void Pessoa::imprime_idade()
 {
 	// substitui printf("A idade de %s seria %i\n", nomeP, idadeP);
-	cout << "A idade de " << nomeP << " seria " << idadeP << endl;
+	cout << "A idade de " << nome << " seria " << idadeP << endl;
 }
 
 void Pessoa::calc_imprime_idade(int diaAtual, int mesAtual, int anoAtual)
 {
 	calc_idade(diaAtual, mesAtual, anoAtual);
 	imprime_idade();
-}
-
-void Pessoa::setUnivFiliado(Universidade* pu)
-{
-	associadoUnivP = pu;
-}
-
-void Pessoa::ondeTrabalho()
-{
-	cout << nomeP << " trabalha em " << associadoUnivP->getNome() << endl;
 }

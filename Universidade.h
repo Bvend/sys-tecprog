@@ -1,9 +1,13 @@
 #pragma once
 
+#include "Departamento.h"
+
 class Universidade
 {
 private:
-	char nome[30];
+	char nome[100];
+
+	list<Departamento*> dptos;
 
 public:
 	// Construtora
@@ -14,4 +18,6 @@ public:
 
 	void setNome(const char* n);
 	char* getNome();
+	void setDpto(Departamento* pd, int id);
+	void informaDptos();
 };
