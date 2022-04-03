@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "Aluno.h"
+#include "ElDisciplina.h"
+#include "ListaAlunos.h"
 
 class Departamento;
 
@@ -14,13 +16,7 @@ private:
 
 	Departamento* dptoFiliado;
 
-	Disciplina* proxDscp;
-	Disciplina* prevDscp;
-
-	int maxAlunos;
-	int conta_Alunos;
-	ElAluno* pElAlunoI;
-	ElAluno* pElAlunoF;
+	ListaAlunos objLstAlunos;
 
 public:
 	// Construtora e Destrutora
@@ -37,14 +33,8 @@ public:
 	// Departamento associado
 	void setDptoFiliado(Departamento* pd);
 
-	// Lista de Disciplinas
-	void setProxDscp(Disciplina* pd);
-	Disciplina* getProxDscp();
-	void setPrevDscp(Disciplina* pd);
-	Disciplina* getPrevDscp();
-
 	// Alunos pertencentes à disciplina
 	void incluiAluno(Aluno* pa);
-	void listeAlunos();
+	void listaAlunos();
 	/*void excluiAluno(Aluno* pa);*/
 };

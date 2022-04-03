@@ -1,5 +1,6 @@
 #include "Departamento.h"
 #include "Disciplina.h"
+#include "ListaDisciplinas.h"
 
 Departamento::Departamento()
 {
@@ -8,8 +9,7 @@ Departamento::Departamento()
 
 	univFiliada = NULL;
 
-	pPrimDscp = NULL;
-	pAtualDscp = NULL;
+	pObjLstDscps = new ListaDisciplinas();
 }
 
 Departamento::Departamento(const char* n)
@@ -19,15 +19,15 @@ Departamento::Departamento(const char* n)
 
 	univFiliada = NULL;
 
-	pPrimDscp = NULL;
-	pAtualDscp = NULL;
+	pObjLstDscps = new ListaDisciplinas();
 }
 
 Departamento::~Departamento()
 {
 	univFiliada = NULL;
-	pPrimDscp = NULL;
-	pAtualDscp = NULL;
+
+	if (pObjLstDscps)
+		delete pObjLstDscps;
 }
 
 int Departamento::getId()
@@ -57,27 +57,10 @@ void Departamento::setUnivFiliada(Universidade* pu)
 
 void Departamento::incluiDscp(Disciplina* pd)
 {
-	if (pPrimDscp == NULL)
-	{
-		pPrimDscp = pd;
-		pAtualDscp = pd;
-	}
-	else
-	{
-		pd->setPrevDscp(pAtualDscp);
-		(*pAtualDscp).setProxDscp(pd);
-		pAtualDscp = pd;
-	}
+	pObjLstDscps->incluiDscp(pd);
 }
 
-void Departamento::listeDscp()
+void Departamento::listaDscp()
 {
-	Disciplina* aux = pPrimDscp;
-	cout << "Disciplinas do " << nome << ": ";
-	while (aux != NULL)
-	{
-		cout << aux->getNome() << "\t";
-		aux = aux->getProxDscp();
-	}
-	cout << "\n";
+	pObjLstDscps->listaDscp();
 }

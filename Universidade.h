@@ -1,13 +1,15 @@
 #pragma once
 
 #include "Departamento.h"
+#include "ListaDepartamentos.h"
+#include "ElDepartamento.h"
 
 class Universidade
 {
 private:
 	char nome[100];
 
-	list<Departamento*> dptos;
+	ListaDepartamentos* pObjListaDptos;
 
 public:
 	// Construtora
@@ -18,6 +20,7 @@ public:
 
 	void setNome(const char* n);
 	char* getNome();
-	void setDpto(Departamento* pd, int id);
-	void informaDptos();
+
+	void incluiDpto(Departamento* pd);
+	void listaDptos();
 };

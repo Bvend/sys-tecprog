@@ -3,15 +3,20 @@
 Universidade::Universidade(const char* n)
 {
 	strcpy_s(nome, n);
+
+	pObjListaDptos = new ListaDepartamentos();
 }
 
 Universidade::Universidade()
 {
 	strcpy_s(nome, "");
+
+	pObjListaDptos = new ListaDepartamentos();
 }
 
 Universidade::~Universidade()
 {
+	delete(pObjListaDptos);
 }
 
 void Universidade::setNome(const char* n)
@@ -24,17 +29,12 @@ char *Universidade::getNome()
 	return (nome);
 }
 
-void Universidade::setDpto(Departamento* pd, int id)
+void Universidade::incluiDpto(Departamento* pd)
 {
-	dptos.push_back(pd);
-	(*pd).setId(id);
+	pObjListaDptos->incluiDpto(pd);
 }
 
-void Universidade::informaDptos()
+void Universidade::listaDptos()
 {
-	list<Departamento*>::iterator it;
-	for (it = dptos.begin(); it != dptos.end(); it++)
-	{
-		cout << (*it)->getNome() << " " << (**it).getId() << endl;
-	}
+	pObjListaDptos->listaDptos();
 }

@@ -3,6 +3,8 @@
 #include "Professor.h"
 #include "Aluno.h"
 #include "Disciplina.h"
+#include "Universidade.h"
+#include "ListaUniversidades.h"
 
 class Principal
 {

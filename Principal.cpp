@@ -25,12 +25,12 @@ void Principal::inicializaUniv()
 {
 	// Iniciliza Princeton
 	Princeton.setNome("Princeton");
-	Princeton.setDpto(&PrincetonFis, 0);
+	Princeton.incluiDpto(&PrincetonFis);
 
 	// Inicializa UTFPR
 	UTFPR.setNome("Universidade Tecnologica Federal do Parana");
-	UTFPR.setDpto(&DAINF, 0);
-	UTFPR.setDpto(&DAELN, 1);
+	UTFPR.incluiDpto(&DAINF);
+	UTFPR.incluiDpto(&DAELN);
 
 	// Imprime departamentos com universidade
 	//Princeton.informaDptos();
@@ -118,10 +118,10 @@ void Principal::imprime_onde_trabalho()
 
 void Principal::lista_dscp_por_dpto()
 {
-	DAINF.listeDscp();
+	DAINF.listaDscp();
 }
 
 void Principal::lista_alunos()
 {
-	ED1.listeAlunos();
+	ED1.listaAlunos();
 }

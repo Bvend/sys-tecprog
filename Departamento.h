@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
-#include <list>
 using namespace std;
+#include "ElDepartamento.h"
 
 class Universidade;
 class Disciplina;
+class ElDisciplina;
+class ListaDisciplinas;
 
 class Departamento
 {
@@ -16,9 +18,8 @@ private:
 	char nome[100];
 
 	Universidade* univFiliada;
-	
-	Disciplina* pPrimDscp;
-	Disciplina* pAtualDscp;
+
+	ListaDisciplinas* pObjLstDscps;
 
 public:
 	// Construtora e Destrutora
@@ -34,5 +35,5 @@ public:
 	void setUnivFiliada(Universidade* pu);
 
 	void incluiDscp(Disciplina* pd);
-	void listeDscp();
+	void listaDscp();
 };

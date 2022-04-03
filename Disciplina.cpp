@@ -7,12 +7,6 @@ Disciplina::Disciplina()
 	id = -1;
 	strcpy_s(nome, "");
 	dptoFiliado = NULL;
-	proxDscp = NULL;
-	prevDscp = NULL;
-	maxAlunos = 45;
-	conta_Alunos = 0;
-	pElAlunoI = NULL;
-	pElAlunoF = NULL;
 }
 
 Disciplina::Disciplina(int identf, const char* n, Departamento* pd, int max)
@@ -20,31 +14,11 @@ Disciplina::Disciplina(int identf, const char* n, Departamento* pd, int max)
 	id = identf;
 	strcpy_s(nome, n);
 	dptoFiliado = pd;
-	proxDscp = NULL;
-	prevDscp = NULL;
-	maxAlunos = max;
-	conta_Alunos = 0;
-	pElAlunoI = NULL;
-	pElAlunoF = NULL;
 }
 
 Disciplina::~Disciplina()
 {
-	ElAluno* aux = NULL;
-	aux = pElAlunoI;
-	while (aux != NULL)
-	{
-		pElAlunoI = pElAlunoI->getProxElAluno();
-		delete(aux);
-		aux = pElAlunoI;
-	}
-
-
 	dptoFiliado = NULL;
-	proxDscp = NULL;
-	prevDscp = NULL;
-	pElAlunoI = NULL;
-	pElAlunoF = NULL;
 }
 
 void Disciplina::setId(int identf)
@@ -74,72 +48,14 @@ void Disciplina::setDptoFiliado(Departamento* pd)
 	dptoFiliado->incluiDscp(this);
 }
 
-void Disciplina::setProxDscp(Disciplina* pd)
-{
-	proxDscp = pd;
-}
-
-Disciplina* Disciplina::getProxDscp()
-{
-	return proxDscp;
-}
-
-void Disciplina::setPrevDscp(Disciplina* pd)
-{
-	prevDscp = pd;
-}
-
-Disciplina* Disciplina::getPrevDscp()
-{
-	return prevDscp;
-}
-
 void Disciplina::incluiAluno(Aluno* pa)
 {
-	if (conta_Alunos == 45)
-	{
-		cout << "Aluno nao incluido. Turma cheia." << endl;
-		return;
-	}
-
-	if (pa == NULL)
-	{
-		cout << "Erro na inclusao do aluno" << endl;
-		return;
-	}
-
-	ElAluno* paux = NULL;
-
-	paux = new ElAluno();
-
-	paux->setPAluno(pa);
-
-	if (pElAlunoI == NULL)
-	{
-		pElAlunoI = paux;
-		pElAlunoF = paux;
-	}
-	else
-	{
-		pElAlunoF->setProxElAluno(paux);
-		paux->setPrevElAluno(pElAlunoF);
-		pElAlunoF = paux;
-	}
-	
-	conta_Alunos++;
+	objLstAlunos.incluiAluno(pa);
 }
 
-void Disciplina::listeAlunos()
+void Disciplina::listaAlunos()
 {
-	ElAluno* aux = NULL;
-	aux = pElAlunoI;
-	cout << "Alunos da Disciplina " << nome << ": ";
-	while (aux != NULL)
-	{
-		cout << (aux->getPAluno())->getNome() << "\t";
-		aux = aux->getProxElAluno();
-	}
-	cout << endl;
+	objLstAlunos.listaAlunos();
 }
 
 // Nao Funciona - Falta alterar pAtualAluno
