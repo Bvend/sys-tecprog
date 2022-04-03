@@ -5,11 +5,12 @@
 #include "Disciplina.h"
 #include "Universidade.h"
 #include "ListaUniversidades.h"
+#include "ListaDisciplinas.h"
 
 class Principal
 {
 private:
-	// Universidades
+	/*// Universidades
 	Universidade Princeton;
 	Universidade UTFPR;
 
@@ -33,14 +34,19 @@ private:
 	// Data
 	int diaAtual;
 	int mesAtual;
-	int anoAtual;
+	int anoAtual;*/
+
+	// Listas
+	ListaUniversidades LUnivs;
+	ListaDepartamentos LDptos;
+	ListaDisciplinas LDscps;
 
 public:
 	// Construtora e Destrutora
 	Principal();
 	~Principal();
 
-	// Inicializações
+	// Inicializacoes
 	void inicializa();
 
 	void inicializaUniv();
@@ -49,10 +55,20 @@ public:
 	void inicializaPrfs();
 	void inicializaAlunos();
 
+	// Funcoes de Comandos
 	void executar();
 
 	void imprime_calc_idade();
 	void imprime_onde_trabalho();
 	void lista_dscp_por_dpto();
 	void lista_alunos();
+
+	// Menu e Funcoes Cadastrar
+	void Menu();
+	void MenuCad();
+	void MenuExe();
+
+	void CadDisciplina();
+	void CadDepartamento();
+	void CadUniversidade();
 };

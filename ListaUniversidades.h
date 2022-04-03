@@ -22,4 +22,6 @@ public:
 
 	void incluiUniv(Universidade* pu);
 	void listaUnivs();
+
+	Universidade* localizar(const char* n);
 };

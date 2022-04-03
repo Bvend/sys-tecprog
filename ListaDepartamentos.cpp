@@ -72,3 +72,18 @@ void ListaDepartamentos::listaDptos()
 	}
 	cout << "===" << endl;
 }
+
+Departamento* ListaDepartamentos::localizar(const char* n)
+{
+	ElDepartamento* paux = NULL;
+	paux = pElDptoI;
+	while (paux != NULL)
+	{
+		if (0 == strcmp(n, (paux->getPDpto()->getNome())))
+		{
+			return paux->getPDpto();
+		}
+		paux = paux->getProxElDpto();
+	}
+	return NULL;
+}

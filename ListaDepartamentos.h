@@ -23,4 +23,6 @@ public:
 
 	void incluiDpto(Departamento* pd);
 	void listaDptos();
+
+	Departamento* localizar(const char* n);
 };

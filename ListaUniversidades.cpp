@@ -71,3 +71,18 @@ void ListaUniversidades::listaUnivs()
 	}
 	cout << "===" << endl;
 }
+
+Universidade* ListaUniversidades::localizar(const char* n)
+{
+	ElUniversidade* paux = NULL;
+	paux = pElUnivI;
+	while (paux != NULL)
+	{
+		if (0 == strcmp(n, (paux->getPUniv())->getNome()))
+		{
+			return paux->getPUniv();
+		}
+		paux = paux->getPrevElUniv();
+	}
+	return NULL;
+}
