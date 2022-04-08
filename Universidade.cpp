@@ -1,15 +1,15 @@
 #include "Universidade.h"
 
-Universidade::Universidade(const char* n)
+Universidade::Universidade(int i)
 {
-	strcpy_s(nome, n);
-
+	strcpy_s(nome, "");
+	id = i;
 	pObjListaDptos = new ListaDepartamentos();
 }
 
-Universidade::Universidade()
+Universidade::Universidade(const char* n)
 {
-	strcpy_s(nome, "");
+	strcpy_s(nome, n);
 
 	pObjListaDptos = new ListaDepartamentos();
 }

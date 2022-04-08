@@ -2,9 +2,9 @@
 #include "Disciplina.h"
 #include "ListaDisciplinas.h"
 
-Departamento::Departamento()
+Departamento::Departamento(int i)
 {
-	id = -1;
+	id = i;
 	strcpy_s(nome, "");
 
 	univFiliada = NULL;

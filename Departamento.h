@@ -23,7 +23,7 @@ private:
 
 public:
 	// Construtora e Destrutora
-	Departamento();
+	Departamento(int i = -1);
 	Departamento(const char* n);
 	~Departamento();
 

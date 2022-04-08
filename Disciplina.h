@@ -20,8 +20,8 @@ private:
 
 public:
 	// Construtora e Destrutora
-	Disciplina();
-	Disciplina(int identf, const char* n = "", Departamento* pd = NULL, int max = 45);
+	Disciplina(int i = -1);
+	Disciplina(const char* n, Departamento* pd);
 	~Disciplina();
 
 	// Informações básicas

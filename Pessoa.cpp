@@ -1,7 +1,8 @@
 #include "Pessoa.h"
 
-Pessoa::Pessoa()
+Pessoa::Pessoa(int i)
 {
+	id = i;
 	inicializa(0, 0, 0);
 }
 
@@ -31,6 +32,16 @@ void Pessoa::setNome(const char* n)
 char* Pessoa::getNome()
 {
 	return nome;
+}
+
+void Pessoa::setId(int i)
+{
+	id = i;
+}
+
+int Pessoa::getId()
+{
+	return id;
 }
 
 void Pessoa::calc_idade(int diaAtual, int mesAtual, int anoAtual)

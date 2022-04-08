@@ -10,12 +10,17 @@
 class Principal
 {
 private:
-	/*// Universidades
-	Universidade Princeton;
+	// Contadores para identificadores
+	int cont_idDscp;
+	int cont_idDpto;
+	int cont_idAluno;
+
+	// Universidades
+	// Universidade Princeton;
 	Universidade UTFPR;
 
 	// Departamentos
-	Departamento PrincetonFis;
+	// Departamento PrincetonFis;
 	Departamento DAINF;
 	Departamento DAELN;
 
@@ -25,7 +30,8 @@ private:
 	Disciplina TecProg;
 
 	// Professores
-	Professor Eisten;
+	// Professor Eisten;
+	Professor Bogdan;
 
 	// Aluno
 	Aluno Joao;
@@ -34,12 +40,13 @@ private:
 	// Data
 	int diaAtual;
 	int mesAtual;
-	int anoAtual;*/
+	int anoAtual;
 
 	// Listas
 	ListaUniversidades LUnivs;
 	ListaDepartamentos LDptos;
 	ListaDisciplinas LDscps;
+	ListaAlunos LAlunos;
 
 public:
 	// Construtora e Destrutora
@@ -67,8 +74,25 @@ public:
 	void Menu();
 	void MenuCad();
 	void MenuExe();
+	void MenuGravar();
+	void MenuRecuperar();
 
+	void CadAluno();
 	void CadDisciplina();
 	void CadDepartamento();
 	void CadUniversidade();
+
+	void GravarTudo();
+	void GravarUniversidades();
+	void GravarDepartamentos();
+	void GravarDisciplinas();
+	void GravarAlunos();
+	void GravarProfessores();
+
+	void RecuperarTudo();
+	void RecuperarUniversidades();
+	void RecuperarDepartamentos();
+	void RecuperarDisciplinas();
+	void RecuperarAlunos();
+	void RecuperarProfessores();
 };

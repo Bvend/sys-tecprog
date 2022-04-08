@@ -12,7 +12,7 @@ private:
 
 public:
 	// Construtora e destrutora
-	Aluno();
+	Aluno(int i = -1);
 	Aluno(int diaNasc, int mesNasc, int anoNasc, const char* n);
 	~Aluno();
 

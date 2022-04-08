@@ -19,9 +19,14 @@ public:
 	ListaAlunos(const char* n = "");
 	~ListaAlunos();
 
+	void limpaLista();
+
 	void setNome(const char* n);
 	char* getNome();
 
 	void incluiAluno(Aluno* pa);
 	void listaAlunos();
+
+	void graveAlunos();
+	void recupereAlunos();
 };

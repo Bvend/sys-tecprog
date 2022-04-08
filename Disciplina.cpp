@@ -2,16 +2,15 @@
 #include "Departamento.h"
 #include "Aluno.h"
 
-Disciplina::Disciplina()
+Disciplina::Disciplina(int i)
 {
-	id = -1;
+	id = i;
 	strcpy_s(nome, "");
 	dptoFiliado = NULL;
 }
 
-Disciplina::Disciplina(int identf, const char* n, Departamento* pd, int max)
+Disciplina::Disciplina(const char* n, Departamento* pd)
 {
-	id = identf;
 	strcpy_s(nome, n);
 	dptoFiliado = pd;
 }

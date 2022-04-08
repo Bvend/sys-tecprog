@@ -8,12 +8,13 @@ class Universidade
 {
 private:
 	char nome[100];
+	int id;
 
 	ListaDepartamentos* pObjListaDptos;
 
 public:
 	// Construtora
-	Universidade();
+	Universidade(int i = -1);
 	Universidade(const char *n);
 	// Destrutora
 	~Universidade();

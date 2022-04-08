@@ -1,8 +1,8 @@
 #include "Aluno.h"
 #include <string.h>
 
-Aluno::Aluno():
-Pessoa()
+Aluno::Aluno(int i):
+Pessoa(i)
 {
 	RA = -1;
 	strcpy_s(nome, "");

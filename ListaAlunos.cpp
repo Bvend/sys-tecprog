@@ -1,5 +1,6 @@
 #include "ListaAlunos.h"
 #include "Aluno.h"
+#include <fstream>
 
 ListaAlunos::ListaAlunos(const char* n)
 {
@@ -20,6 +21,22 @@ ListaAlunos::~ListaAlunos()
 		delete(aux);
 		aux = pElAlunoI;
 	}
+
+	pElAlunoF = NULL;
+}
+
+void ListaAlunos::limpaLista()
+{
+	ElAluno* aux = NULL;
+	aux = pElAlunoI;
+	while (aux != NULL)
+	{
+		pElAlunoI = pElAlunoI->getProxElAluno();
+		delete(aux);
+		aux = pElAlunoI;
+	}
+
+	pElAlunoF = NULL;
 }
 
 void ListaAlunos::setNome(const char* n)
@@ -77,4 +94,67 @@ void ListaAlunos::listaAlunos()
 		aux = aux->getProxElAluno();
 	}
 	cout << "===" << endl;
+}
+
+void ListaAlunos::graveAlunos()
+{
+	ifstream RecuperadorAlunos("alunos.dat", ios::in);
+	if (!RecuperadorAlunos)
+	{
+		cerr << "Arquivo nao pode ser aberto" << endl;
+		fflush(stdin);
+		getchar();
+		return;
+	}
+
+	limpaLista();
+
+	Aluno* pauxAluno = NULL;
+	int id;
+	int ra;
+	char nome[150];
+	while (RecuperadorAlunos >> id >> ra >> nome)
+	{
+		if (0 != strcmp(nome, ""))
+		{
+			pauxAluno = new Aluno(-1);
+			pauxAluno->setId(id);
+			pauxAluno->setRa(ra);
+			pauxAluno->setNome(nome);
+
+			incluiAluno(pauxAluno);
+		}
+	}
+	RecuperadorAlunos.close();
+}
+
+void ListaAlunos::recupereAlunos()
+{
+	ofstream GravadorAlunos("alunos.dat", ios::out);
+
+	if (!GravadorAlunos)
+	{
+		cerr << "arquivo nao pode ser aberto" << endl;
+		fflush(stdin);
+		getchar();
+		return;
+	}
+
+	ElAluno* pauxElAluno = NULL;
+	Aluno* pauxAluno = NULL;
+
+	pauxElAluno = pElAlunoI;
+
+	while (pauxElAluno != NULL)
+	{
+		pauxAluno = pauxElAluno->getPAluno();
+
+		GravadorAlunos << pauxAluno->getId() << ""
+					   << pauxAluno->getRa() << ""
+					   << pauxAluno->getNome() << endl;
+
+		pauxElAluno = pauxElAluno->getProxElAluno();
+	}
+
+	GravadorAlunos.close();
 }
